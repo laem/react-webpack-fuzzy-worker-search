@@ -3,10 +3,18 @@ import Fuse from "fuse.js"
 let searchWeights = [
   {
     name: "nom",
-    weight: 0.3
+    weight: 0.6
+  },
+  {
+    name: "catégorie",
+    weight: 0.2
+  },
+  {
+    name: "sous catégorie",
+    weight: 0.2
   }
 ]
-console.log("SALUT")
+console.log("SALUT JE SUIS LE WEBWORKER")
 let fuse = null
 
 onmessage = function(event) {
@@ -17,6 +25,6 @@ onmessage = function(event) {
 
   if (event.data.input) {
     let results = fuse.search(event.data.input)
-    postMessage(results)
+    postMessage(results.slice(0, 10))
   }
 }
