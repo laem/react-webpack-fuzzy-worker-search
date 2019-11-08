@@ -1,3 +1,5 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+
 module.exports = {
   module: {
     rules: [
@@ -16,5 +18,12 @@ module.exports = {
   output: {
     filename: "index.js",
     path: __dirname + "/dist"
-  }
+  },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Démo recherche floue",
+      template: "index.html"
+    })
+  ]
 }
